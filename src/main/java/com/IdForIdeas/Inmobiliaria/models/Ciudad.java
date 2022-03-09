@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,10 +20,10 @@ public class Ciudad {
 	private Long id;
 	@Column(name = "ciudad_nombre")
 	private String nombre;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pais_id", nullable = false)
 	private Pais pais;
-	@OneToMany(mappedBy = "ciudad")
+	@OneToMany(mappedBy = "ciudad", fetch = FetchType.LAZY)
 	private Set<Inmueble> inmuebles;
 	
 	public Ciudad() {

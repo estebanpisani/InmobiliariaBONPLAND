@@ -25,8 +25,13 @@ public class CiudadService {
 	
 	public Ciudad create(String nombre, Pais pais) {
 		Ciudad ciudad = new Ciudad();
-		ciudad.setNombre(nombre);		
-		ciudad.setPais(paisServ.create(pais.getNombre()));
+		ciudad.setNombre(nombre);
+		
+		if(paisServ.getByName(pais.getNombre())!=null){
+			ciudad.setPais(paisServ.getByName(pais.getNombre()));
+		}else {
+			ciudad.setPais(paisServ.create(pais.getNombre()));
+		}
 		return ciudadRepo.save(ciudad);
 	}
 	

@@ -48,4 +48,11 @@ public class PaisService {
 	public Pais getById(Long id) {
 		return paisRepo.getById(id);
 	}
+	
+	public Pais getByName(String nombre) {
+		if(paisRepo.findByNombre(nombre).size()>0) {
+		return paisRepo.findByNombre(nombre).get(0);}
+		return null;
+		
+	}
 }
