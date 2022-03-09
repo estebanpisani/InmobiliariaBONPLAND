@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.IdForIdeas.Inmobiliaria.models.Ciudad;
+import com.IdForIdeas.Inmobiliaria.DTO.CiudadDTO;
 import com.IdForIdeas.Inmobiliaria.services.CiudadService;
 
 @RestController
@@ -22,24 +22,22 @@ public class CiudadController {
 CiudadService ciudadServ;
 
 	@GetMapping
-	public ResponseEntity<List<Ciudad>> getAll(){
+	public ResponseEntity<List<CiudadDTO>> getAll(){
 		return ResponseEntity.ok().body(ciudadServ.getAll());
 	}
+	
 	@GetMapping("/{id}")
-	public ResponseEntity<Ciudad> getByBid(@PathVariable Long id){
+	public ResponseEntity<CiudadDTO> getById(@PathVariable Long id){
 		return ResponseEntity.ok().body(ciudadServ.getById(id));
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<Ciudad> create(@RequestBody Ciudad ciudad){
-		return ResponseEntity.status(HttpStatus.CREATED).body(ciudadServ.create(ciudad.getNombre(), ciudad.getPais()));
+	public ResponseEntity<CiudadDTO> create(@RequestBody CiudadDTO dto){
+		return ResponseEntity.status(HttpStatus.CREATED).body(ciudadServ.create(dto));
 	}
+	
 	@PostMapping("/{id}")
-	public ResponseEntity<Ciudad> update(@PathVariable Long id, @RequestBody Ciudad ciudad){
-		return ResponseEntity.status(HttpStatus.CREATED).body(ciudadServ.updateName(ciudad.getNombre(), id));
+	public ResponseEntity<CiudadDTO> update(@PathVariable Long id, @RequestBody CiudadDTO dto){
+		return ResponseEntity.status(HttpStatus.CREATED).body(ciudadServ.updateName(dto, id));
 	}
-	
-	
-
-
 }

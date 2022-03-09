@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.IdForIdeas.Inmobiliaria.DTO.PaisDTO;
 import com.IdForIdeas.Inmobiliaria.models.Pais;
 import com.IdForIdeas.Inmobiliaria.services.PaisService;
 
@@ -22,24 +23,22 @@ public class PaisController {
 	PaisService paisServ;
 	
 	@GetMapping
-	public ResponseEntity<List<Pais>>getAllPaises(){
+	public ResponseEntity<List<PaisDTO>>getAllPaises(){
 		return ResponseEntity.ok().body(paisServ.getAllPaises());
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<Pais>getById(@PathVariable Long id){
+	public ResponseEntity<PaisDTO>getById(@PathVariable Long id){
 		return ResponseEntity.ok().body(paisServ.getById(id));
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<Pais>createPais(@RequestBody Pais pais){
-		Pais newPais = paisServ.create(pais.getNombre());
-		return ResponseEntity.status(HttpStatus.CREATED).body(newPais);
+	public ResponseEntity<PaisDTO>createPais(@RequestBody PaisDTO dto){
+		return ResponseEntity.status(HttpStatus.CREATED).body(paisServ.create(dto));
 	}
 	
 	@PostMapping("/{id}")
-	public ResponseEntity<Pais>updatePais(@PathVariable Long id, @RequestBody Pais pais){
-		Pais paisUPD = paisServ.updateName(id, pais.getNombre());
-		return ResponseEntity.ok().body(pais);
+	public ResponseEntity<PaisDTO>updatePais(@PathVariable Long id, @RequestBody PaisDTO dto){
+		return ResponseEntity.ok().body(paisServ.updateName(id, dto));
 	}
 
 }
