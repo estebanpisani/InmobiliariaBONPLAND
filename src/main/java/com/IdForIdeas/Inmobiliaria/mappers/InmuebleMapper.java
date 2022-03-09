@@ -1,5 +1,8 @@
 package com.IdForIdeas.Inmobiliaria.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,5 +33,35 @@ public class InmuebleMapper {
 		}
 		return inmueble;
 	}
-
+	
+	public InmuebleDTO Entity2DTO(Inmueble inmueble) {
+		InmuebleDTO dto = new InmuebleDTO();
+		dto.setNombre(inmueble.getNombre());
+		dto.setDescripcion(inmueble.getDescripcion());
+		dto.setAmbientes(inmueble.getAmbientes());
+		dto.setMetrosCuadrados(inmueble.getMetrosCuadrados());
+		dto.setPrecio(inmueble.getPrecio());
+		
+		dto.setContrato(inmueble.getContrato());
+		dto.setEstado(inmueble.getEstado());
+		
+		dto.setCiudad(inmueble.getCiudad().getNombre());
+		
+		return dto;
+	}
+	public List<InmuebleDTO> EntityList2DTOList(List<Inmueble> inmuebles){
+		List<InmuebleDTO> dtos = new ArrayList<>();
+		for (Inmueble inmueble : inmuebles) {
+			dtos.add(this.Entity2DTO(inmueble));
+		}
+		return dtos;
+	}
+	
+	public List<Inmueble> DTOList2EntityList(List<InmuebleDTO> dtos){
+		List<Inmueble> inmuebles = new ArrayList<>();
+		for (InmuebleDTO dto : dtos) {
+			inmuebles.add(DTO2Entity(dto));
+		}
+		return inmuebles;
+	}
 }
