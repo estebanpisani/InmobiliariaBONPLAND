@@ -22,6 +22,7 @@ public class Inmueble {
 	@Column(name = "inmueble_nombre")
 	private String nombre;
 	private String descripcion;
+	private String direccion;
 	private Integer ambientes;
 	private Double metrosCuadrados;
 	private Double precio;
@@ -119,9 +120,18 @@ public class Inmueble {
 		this.estado = estado;
 	}
 
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 	@Override
 	public String toString() {
 		return "Inmueble [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", ambientes=" + ambientes
 				+ ", metrosCuadrados=" + metrosCuadrados + ", precio=" + precio + ", ciudad=" + ciudad + "]";
 	}
+
 }

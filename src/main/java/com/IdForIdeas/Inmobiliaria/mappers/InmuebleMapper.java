@@ -19,6 +19,7 @@ public class InmuebleMapper {
 		Inmueble inmueble = new Inmueble();
 		inmueble.setNombre(dto.getNombre());
 		inmueble.setDescripcion(dto.getDescripcion());
+		inmueble.setDireccion(dto.getDireccion());
 		inmueble.setPrecio(dto.getPrecio());
 		inmueble.setMetrosCuadrados(dto.getMetrosCuadrados());
 		inmueble.setAmbientes(dto.getAmbientes());
@@ -38,6 +39,7 @@ public class InmuebleMapper {
 		InmuebleDTO dto = new InmuebleDTO();
 		dto.setNombre(inmueble.getNombre());
 		dto.setDescripcion(inmueble.getDescripcion());
+		dto.setDireccion(inmueble.getDireccion());
 		dto.setAmbientes(inmueble.getAmbientes());
 		dto.setMetrosCuadrados(inmueble.getMetrosCuadrados());
 		dto.setPrecio(inmueble.getPrecio());

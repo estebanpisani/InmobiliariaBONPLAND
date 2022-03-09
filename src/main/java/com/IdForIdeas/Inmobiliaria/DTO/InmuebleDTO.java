@@ -6,6 +6,7 @@ import com.IdForIdeas.Inmobiliaria.enums.EstadoInmueble;
 public class InmuebleDTO {
 	private String nombre;
 	private String descripcion;
+	private String direccion;
 	private Integer ambientes;
 	private Double metrosCuadrados;
 	private Double precio;
@@ -72,6 +73,12 @@ public class InmuebleDTO {
 	}
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	
 }

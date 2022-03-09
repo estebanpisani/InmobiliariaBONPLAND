@@ -30,10 +30,11 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	
-	public Inmueble create(String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio, Contrato contrato, EstadoInmueble estado, Ciudad ciudad) {
+	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, Contrato contrato, EstadoInmueble estado, Ciudad ciudad) {
 		Inmueble inmueble = new Inmueble();
 		inmueble.setNombre(nombre);
 		inmueble.setDescripcion(descripcion);
+		inmueble.setDireccion(direccion);
 		inmueble.setAmbientes(ambientes);
 		inmueble.setMetrosCuadrados(metrosCuadrados);
 		inmueble.setPrecio(precio);
