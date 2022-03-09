@@ -33,7 +33,7 @@ public class PaisController {
 	@PostMapping("/create")
 	public ResponseEntity<Pais>createPais(@RequestBody Pais pais){
 		Pais newPais = paisServ.create(pais.getNombre());
-		return ResponseEntity.status(HttpStatus.CREATED).body(pais);
+		return ResponseEntity.status(HttpStatus.CREATED).body(newPais);
 	}
 	
 	@PostMapping("/{id}")
