@@ -1,2 +1,2 @@
-# InmobiliariaBONPLAND
-#idea5 de IDforIdeas. Backend para proyecto de Inmobiliaria BONPLAND.
+# Inmobiliaria BONPLAND
+Backend para proyecto de Inmobiliaria BONPLAND.
