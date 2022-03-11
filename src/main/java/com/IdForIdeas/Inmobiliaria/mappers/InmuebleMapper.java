@@ -26,12 +26,14 @@ public class InmuebleMapper {
 		
 		inmueble.setEstado(dto.getEstado());
 		inmueble.setContrato(dto.getContrato());
-		
+		/*
 		if(dto.getCiudad()!=null && !dto.getCiudad().isEmpty()){
 			if(ciudadServ.getByName(dto.getCiudad())!=null){
 				inmueble.setCiudad(ciudadServ.getByName(dto.getCiudad()));
 			}
 		}
+		*/
+		inmueble.setCiudad(dto.getCiudad());
 		return inmueble;
 	}
 	
@@ -47,7 +49,7 @@ public class InmuebleMapper {
 		dto.setContrato(inmueble.getContrato());
 		dto.setEstado(inmueble.getEstado());
 		
-		dto.setCiudad(inmueble.getCiudad().getNombre());
+		dto.setCiudad(inmueble.getCiudad());
 		
 		return dto;
 	}

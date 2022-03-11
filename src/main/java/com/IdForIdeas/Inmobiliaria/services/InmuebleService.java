@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import com.IdForIdeas.Inmobiliaria.DTO.InmuebleDTO;
 import com.IdForIdeas.Inmobiliaria.enums.Contrato;
 import com.IdForIdeas.Inmobiliaria.enums.EstadoInmueble;
+import com.IdForIdeas.Inmobiliaria.filters.InmuebleFiltersDTO;
 import com.IdForIdeas.Inmobiliaria.mappers.InmuebleMapper;
 import com.IdForIdeas.Inmobiliaria.models.Ciudad;
 import com.IdForIdeas.Inmobiliaria.models.Inmueble;
 import com.IdForIdeas.Inmobiliaria.repositories.InmuebleRepository;
+import com.IdForIdeas.Inmobiliaria.repositories.specifications.InmuebleSpecification;
 
 @Service
 public class InmuebleService {
@@ -20,7 +22,8 @@ public class InmuebleService {
 	InmuebleRepository inmuebleRepo;
 	@Autowired
 	InmuebleMapper mapper;
-	
+	@Autowired
+	InmuebleSpecification inmuebleSpecification;
 	/*
 	 * Crea un nuevo inmueble.
 	 */
@@ -30,7 +33,7 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	
-	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, Contrato contrato, EstadoInmueble estado, Ciudad ciudad) {
+	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad) {
 		Inmueble inmueble = new Inmueble();
 		inmueble.setNombre(nombre);
 		inmueble.setDescripcion(descripcion);
@@ -53,7 +56,7 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	
-	public Inmueble update(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio, Contrato contrato, EstadoInmueble estado, Ciudad ciudad) {
+	public Inmueble update(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad) {
 		Inmueble inmueble = inmuebleRepo.getById(id);
 		inmueble.setNombre(nombre);
 		inmueble.setDescripcion(descripcion);
@@ -78,6 +81,12 @@ public class InmuebleService {
 	
 	public InmuebleDTO getById(Long id) {
 		return mapper.Entity2DTO(inmuebleRepo.getById(id));
+	}
+	
+	public List <InmuebleDTO> getByFilters(String nombre, Integer ambientes, String contrato, String ciudad) {
+		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientes, contrato, ciudad);
+		List<Inmueble> entidades = inmuebleRepo.findAll(inmuebleSpecification.getByFilters(filtersDTO));
+		return mapper.EntityList2DTOList(entidades);
 	}
 	
 	

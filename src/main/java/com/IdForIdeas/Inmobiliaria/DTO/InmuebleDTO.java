@@ -10,13 +10,13 @@ public class InmuebleDTO {
 	private Integer ambientes;
 	private Double metrosCuadrados;
 	private Double precio;
-	private Contrato contrato;
-	private EstadoInmueble estado;
+	private String contrato;
+	private String estado;
 	private String ciudad;
 	public InmuebleDTO() {
 	}
 	public InmuebleDTO(String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
-			Contrato contrato, EstadoInmueble estado, String ciudad) {
+			String contrato, String estado, String ciudad) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ambientes = ambientes;
@@ -56,16 +56,16 @@ public class InmuebleDTO {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-	public Contrato getContrato() {
+	public String getContrato() {
 		return contrato;
 	}
-	public void setContrato(Contrato contrato) {
+	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
-	public EstadoInmueble getEstado() {
+	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(EstadoInmueble estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	public String getCiudad() {

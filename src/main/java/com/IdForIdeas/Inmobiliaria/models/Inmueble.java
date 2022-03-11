@@ -26,6 +26,10 @@ public class Inmueble {
 	private Integer ambientes;
 	private Double metrosCuadrados;
 	private Double precio;
+	private String contrato;
+	private String estado;
+	private String ciudad;
+	/*
 	@Enumerated(EnumType.STRING)
 	private Contrato contrato;
 	@Enumerated(EnumType.STRING)
@@ -33,20 +37,25 @@ public class Inmueble {
 	@ManyToOne
 	@JoinColumn(name = "ciudad_id", nullable = false)
 	private Ciudad ciudad;
-	
+	*/
+
 	public Inmueble() {
 	}
 
-	public Inmueble(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados,
-			Double precio, Ciudad ciudad) {
+	public Inmueble(Long id, String nombre, String descripcion, String direccion, Integer ambientes,
+			Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.direccion = direccion;
 		this.ambientes = ambientes;
 		this.metrosCuadrados = metrosCuadrados;
 		this.precio = precio;
+		this.contrato = contrato;
+		this.estado = estado;
 		this.ciudad = ciudad;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -96,27 +105,27 @@ public class Inmueble {
 		this.precio = precio;
 	}
 
-	public Ciudad getCiudad() {
+	public String getCiudad() {
 		return ciudad;
 	}
 
-	public void setCiudad(Ciudad ciudad) {
+	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
 
-	public Contrato getContrato() {
+	public String getContrato() {
 		return contrato;
 	}
 
-	public void setContrato(Contrato contrato) {
+	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
 
-	public EstadoInmueble getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoInmueble estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
