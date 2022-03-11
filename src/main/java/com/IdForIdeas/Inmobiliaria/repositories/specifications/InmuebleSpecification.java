@@ -42,12 +42,33 @@ public class InmuebleSpecification{
 							criteriaBuilder.lower(root.get("contrato")),"%"+filtersDTO.getContrato().toString().toLowerCase()+"%")
 					);
 			}
+			if(filtersDTO.getAmbientesMin()!=null && filtersDTO.getAmbientesMin()!=0) {
+				predicates.add(
+						criteriaBuilder.greaterThanOrEqualTo(root.get("ambientes"), filtersDTO.getAmbientesMin())
+						);
+			}			
+			if(filtersDTO.getAmbientesMax()!=null && filtersDTO.getAmbientesMax()!=0) {
+				predicates.add(
+						criteriaBuilder.lessThanOrEqualTo(root.get("ambientes"), filtersDTO.getAmbientesMax())
+						);
+			}		
+			if(filtersDTO.getPrecioMin()!=null && filtersDTO.getPrecioMin()!=0) {
+				predicates.add(
+						criteriaBuilder.greaterThanOrEqualTo(root.get("precio"), filtersDTO.getPrecioMin())
+						);
+			}			
+			if(filtersDTO.getPrecioMax()!=null && filtersDTO.getPrecioMax()!=0) {
+				predicates.add(
+						criteriaBuilder.lessThanOrEqualTo(root.get("precio"), filtersDTO.getPrecioMax())
+						);
+			}	
 			
+			/*
 			if(filtersDTO.getAmbientes()!=null && filtersDTO.getAmbientes()!=0) {
 				predicates.add(
 						criteriaBuilder.like(criteriaBuilder.lower(root.get("ambientes").as(String.class)), filtersDTO.getAmbientes().toString())
 						);
-			}
+			}*/
 			
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 		};

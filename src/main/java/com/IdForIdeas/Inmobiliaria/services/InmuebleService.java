@@ -83,8 +83,8 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.getById(id));
 	}
 	
-	public List <InmuebleDTO> getByFilters(String nombre, Integer ambientes, String contrato, String ciudad) {
-		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientes, contrato, ciudad);
+	public List <InmuebleDTO> getByFilters(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, Double precioMin, Double precioMax) {
+		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientesMin, ambientesMax, contrato, ciudad, precioMin, precioMax);
 		List<Inmueble> entidades = inmuebleRepo.findAll(inmuebleSpecification.getByFilters(filtersDTO));
 		return mapper.EntityList2DTOList(entidades);
 	}

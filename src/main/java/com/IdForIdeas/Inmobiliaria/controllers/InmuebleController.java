@@ -48,11 +48,14 @@ public class InmuebleController {
 		@GetMapping
 		public ResponseEntity<List<InmuebleDTO>> getDetailsByFilter(
 				@RequestParam(required = false) String nombre,
-				@RequestParam(required = false) Integer ambientes,
+				@RequestParam(required = false) Integer ambientesMin,
+				@RequestParam(required = false) Integer ambientesMax,
 				@RequestParam(required = false) String contrato,
-				@RequestParam(required = false) String ciudad
+				@RequestParam(required = false) String ciudad,
+				@RequestParam(required = false) Double precioMin,
+				@RequestParam(required = false) Double precioMax
 				){
-			List<InmuebleDTO> results = inmuebleServ.getByFilters(nombre, ambientes, contrato, ciudad);
+			List<InmuebleDTO> results = inmuebleServ.getByFilters(nombre, ambientesMin, ambientesMax, contrato, ciudad, precioMin,precioMax);
 			return ResponseEntity.ok(results);
 		}		
 

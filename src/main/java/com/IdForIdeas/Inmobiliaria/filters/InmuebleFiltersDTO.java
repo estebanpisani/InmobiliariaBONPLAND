@@ -1,19 +1,24 @@
 package com.IdForIdeas.Inmobiliaria.filters;
 
-import com.IdForIdeas.Inmobiliaria.enums.Contrato;
-
 public class InmuebleFiltersDTO {
 	
 	private String nombre;
-	private Integer ambientes;
+	private Integer ambientesMin;
+	private Integer ambientesMax;
 	private String contrato;
 	private String ciudad;
+	private Double precioMin;
+	private Double precioMax;
 	
-	public InmuebleFiltersDTO(String nombre, Integer ambientes, String contrato, String ciudad) {
+	public InmuebleFiltersDTO(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad,
+			Double precioMin, Double precioMax) {
 		this.nombre = nombre;
-		this.ambientes = ambientes;
+		this.ambientesMin = ambientesMin;
+		this.ambientesMax = ambientesMax;
 		this.contrato = contrato;
 		this.ciudad = ciudad;
+		this.precioMin = precioMin;
+		this.precioMax = precioMax;
 	}
 
 	public String getNombre() {
@@ -24,12 +29,20 @@ public class InmuebleFiltersDTO {
 		this.nombre = nombre;
 	}
 
-	public Integer getAmbientes() {
-		return ambientes;
+	public Integer getAmbientesMin() {
+		return ambientesMin;
 	}
 
-	public void setAmbientes(Integer ambientes) {
-		this.ambientes = ambientes;
+	public void setAmbientesMin(Integer ambientesMin) {
+		this.ambientesMin = ambientesMin;
+	}
+
+	public Integer getAmbientesMax() {
+		return ambientesMax;
+	}
+
+	public void setAmbientesMax(Integer ambientesMax) {
+		this.ambientesMax = ambientesMax;
 	}
 
 	public String getContrato() {
@@ -46,5 +59,21 @@ public class InmuebleFiltersDTO {
 
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+
+	public Double getPrecioMin() {
+		return precioMin;
+	}
+
+	public void setPrecioMin(Double precioMin) {
+		this.precioMin = precioMin;
+	}
+
+	public Double getPrecioMax() {
+		return precioMax;
+	}
+
+	public void setPrecioMax(Double precioMax) {
+		this.precioMax = precioMax;
 	}
 }
