@@ -18,16 +18,18 @@ import com.IdForIdeas.Inmobiliaria.models.Inmueble;
 @Component
 public class InmuebleSpecification{
 	
-	public Specification<Inmueble> getByFilters(InmuebleFiltersDTO filtersDTO){
+	public Specification<Inmueble> getEnabledByFilters(InmuebleFiltersDTO filtersDTO){
 		return (root, query, criteriaBuilder) -> {
 			
 			List<Predicate> predicates = new ArrayList<>();
 			
+			predicates.add(criteriaBuilder.like(criteriaBuilder.upper(root.get("estado")),"DISPONIBLE"));
+			
 			if(StringUtils.hasLength(filtersDTO.getNombre())) {
 				predicates.add(
-					criteriaBuilder.like(
-							criteriaBuilder.lower(root.get("nombre")),"%"+filtersDTO.getNombre().toLowerCase()+"%")
+						criteriaBuilder.like(criteriaBuilder.lower(root.get("nombre")),"%"+filtersDTO.getNombre().toLowerCase()+"%")
 					);
+				
 			}
 			
 			if(StringUtils.hasLength(filtersDTO.getCiudad())) {
@@ -67,15 +69,60 @@ public class InmuebleSpecification{
 				predicates.add(
 						criteriaBuilder.lessThanOrEqualTo(root.get("precio"), filtersDTO.getPrecioMax())
 						);
-			}	
+			}				
+			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+		};
+	}
+	public Specification<Inmueble> getAllByFilters(InmuebleFiltersDTO filtersDTO){
+		return (root, query, criteriaBuilder) -> {
 			
-			/*
-			if(filtersDTO.getAmbientes()!=null && filtersDTO.getAmbientes()!=0) {
+			List<Predicate> predicates = new ArrayList<>();
+			
+			if(StringUtils.hasLength(filtersDTO.getNombre())) {
 				predicates.add(
-						criteriaBuilder.like(criteriaBuilder.lower(root.get("ambientes").as(String.class)), filtersDTO.getAmbientes().toString())
-						);
-			}*/
+						criteriaBuilder.like(criteriaBuilder.lower(root.get("nombre")),"%"+filtersDTO.getNombre().toLowerCase()+"%")
+					);
+				
+			}
 			
+			if(StringUtils.hasLength(filtersDTO.getCiudad())) {
+				predicates.add(
+					criteriaBuilder.like(
+							criteriaBuilder.lower(root.get("ciudad")),"%"+filtersDTO.getCiudad().toLowerCase()+"%")
+					);
+			}
+			if(StringUtils.hasLength(filtersDTO.getPais())) {
+				predicates.add(
+					criteriaBuilder.like(
+							criteriaBuilder.lower(root.get("pais")),"%"+filtersDTO.getPais().toLowerCase()+"%")
+					);
+			}
+			if(StringUtils.hasLength(filtersDTO.getContrato())) {
+				predicates.add(
+					criteriaBuilder.like(
+							criteriaBuilder.lower(root.get("contrato")),"%"+filtersDTO.getContrato().toString().toLowerCase()+"%")
+					);
+			}
+			if(filtersDTO.getAmbientesMin()!=null && filtersDTO.getAmbientesMin()!=0) {
+				predicates.add(
+						criteriaBuilder.greaterThanOrEqualTo(root.get("ambientes"), filtersDTO.getAmbientesMin())
+						);
+			}			
+			if(filtersDTO.getAmbientesMax()!=null && filtersDTO.getAmbientesMax()!=0) {
+				predicates.add(
+						criteriaBuilder.lessThanOrEqualTo(root.get("ambientes"), filtersDTO.getAmbientesMax())
+						);
+			}		
+			if(filtersDTO.getPrecioMin()!=null && filtersDTO.getPrecioMin()!=0) {
+				predicates.add(
+						criteriaBuilder.greaterThanOrEqualTo(root.get("precio"), filtersDTO.getPrecioMin())
+						);
+			}			
+			if(filtersDTO.getPrecioMax()!=null && filtersDTO.getPrecioMax()!=0) {
+				predicates.add(
+						criteriaBuilder.lessThanOrEqualTo(root.get("precio"), filtersDTO.getPrecioMax())
+						);
+			}				
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 		};
 	}

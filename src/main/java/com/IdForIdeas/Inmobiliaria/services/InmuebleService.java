@@ -74,8 +74,10 @@ public class InmuebleService {
 	/*
 	 * Obtiene todos los inmuebles en la base de datos.
 	 */
-	public List<InmuebleDTO> getAll(){
-		return mapper.EntityList2DTOList(inmuebleRepo.findAll());
+	public List <InmuebleDTO> getAllByFilters(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, String pais, Double precioMin, Double precioMax, String estado) {
+		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin, precioMax, estado);
+		List<Inmueble> entidades = inmuebleRepo.findAll(inmuebleSpecification.getAllByFilters(filtersDTO));
+		return mapper.EntityList2DTOList(entidades);
 	}
 	/*
 	 * Obtiene inmueble según su ID.
@@ -85,9 +87,9 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.getById(id));
 	}
 	
-	public List <InmuebleDTO> getByFilters(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, String pais, Double precioMin, Double precioMax) {
-		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin, precioMax);
-		List<Inmueble> entidades = inmuebleRepo.findAll(inmuebleSpecification.getByFilters(filtersDTO));
+	public List <InmuebleDTO> getEnabledByFilters(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, String pais, Double precioMin, Double precioMax) {
+		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin, precioMax, "DISPONIBLE");
+		List<Inmueble> entidades = inmuebleRepo.findAll(inmuebleSpecification.getEnabledByFilters(filtersDTO));
 		return mapper.EntityList2DTOList(entidades);
 	}
 	

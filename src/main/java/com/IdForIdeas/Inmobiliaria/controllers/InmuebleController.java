@@ -24,12 +24,23 @@ import com.IdForIdeas.Inmobiliaria.services.InmuebleService;
 public class InmuebleController {
 	@Autowired
 	InmuebleService inmuebleServ;
-	/*
-		@GetMapping
-		public ResponseEntity<List<InmuebleDTO>> getAll(){
-			return ResponseEntity.ok().body(inmuebleServ.getAll());
+
+		@GetMapping("/catalog")
+		public ResponseEntity<List<InmuebleDTO>> getAllByFilter(
+				@RequestParam(required = false) String nombre,
+				@RequestParam(required = false) Integer ambientesMin,
+				@RequestParam(required = false) Integer ambientesMax,
+				@RequestParam(required = false) String contrato,
+				@RequestParam(required = false) String ciudad,
+				@RequestParam(required = false) String pais,
+				@RequestParam(required = false) Double precioMin,
+				@RequestParam(required = false) Double precioMax,
+				@RequestParam(required = false) String estado
+				){
+			List<InmuebleDTO> results = inmuebleServ.getAllByFilters(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin,precioMax, estado);
+			return ResponseEntity.ok(results);	
 		}
-		*/
+
 		@GetMapping("/{id}")
 		public ResponseEntity<InmuebleDTO> getById(@PathVariable Long id){
 			return ResponseEntity.ok().body(inmuebleServ.getById(id));
@@ -46,7 +57,7 @@ public class InmuebleController {
 		}
 	
 		@GetMapping
-		public ResponseEntity<List<InmuebleDTO>> getDetailsByFilter(
+		public ResponseEntity<List<InmuebleDTO>> getEnabledByFilter(
 				@RequestParam(required = false) String nombre,
 				@RequestParam(required = false) Integer ambientesMin,
 				@RequestParam(required = false) Integer ambientesMax,
@@ -56,7 +67,7 @@ public class InmuebleController {
 				@RequestParam(required = false) Double precioMin,
 				@RequestParam(required = false) Double precioMax
 				){
-			List<InmuebleDTO> results = inmuebleServ.getByFilters(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin,precioMax);
+			List<InmuebleDTO> results = inmuebleServ.getEnabledByFilters(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin,precioMax);
 			return ResponseEntity.ok(results);
 		}		
 
