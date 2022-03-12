@@ -52,10 +52,11 @@ public class InmuebleController {
 				@RequestParam(required = false) Integer ambientesMax,
 				@RequestParam(required = false) String contrato,
 				@RequestParam(required = false) String ciudad,
+				@RequestParam(required = false) String pais,
 				@RequestParam(required = false) Double precioMin,
 				@RequestParam(required = false) Double precioMax
 				){
-			List<InmuebleDTO> results = inmuebleServ.getByFilters(nombre, ambientesMin, ambientesMax, contrato, ciudad, precioMin,precioMax);
+			List<InmuebleDTO> results = inmuebleServ.getByFilters(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin,precioMax);
 			return ResponseEntity.ok(results);
 		}		
 

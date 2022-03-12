@@ -29,6 +29,7 @@ public class Inmueble {
 	private String contrato;
 	private String estado;
 	private String ciudad;
+	private String pais;
 	/*
 	@Enumerated(EnumType.STRING)
 	private Contrato contrato;
@@ -135,6 +136,14 @@ public class Inmueble {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 	@Override

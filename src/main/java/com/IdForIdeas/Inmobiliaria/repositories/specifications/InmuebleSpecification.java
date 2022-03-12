@@ -36,6 +36,12 @@ public class InmuebleSpecification{
 							criteriaBuilder.lower(root.get("ciudad")),"%"+filtersDTO.getCiudad().toLowerCase()+"%")
 					);
 			}
+			if(StringUtils.hasLength(filtersDTO.getPais())) {
+				predicates.add(
+					criteriaBuilder.like(
+							criteriaBuilder.lower(root.get("pais")),"%"+filtersDTO.getPais().toLowerCase()+"%")
+					);
+			}
 			if(StringUtils.hasLength(filtersDTO.getContrato())) {
 				predicates.add(
 					criteriaBuilder.like(

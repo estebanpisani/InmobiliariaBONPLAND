@@ -7,16 +7,18 @@ public class InmuebleFiltersDTO {
 	private Integer ambientesMax;
 	private String contrato;
 	private String ciudad;
+	private String pais;
 	private Double precioMin;
 	private Double precioMax;
 	
-	public InmuebleFiltersDTO(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad,
+	public InmuebleFiltersDTO(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, String pais,
 			Double precioMin, Double precioMax) {
 		this.nombre = nombre;
 		this.ambientesMin = ambientesMin;
 		this.ambientesMax = ambientesMax;
 		this.contrato = contrato;
 		this.ciudad = ciudad;
+		this.pais = pais;
 		this.precioMin = precioMin;
 		this.precioMax = precioMax;
 	}
@@ -59,6 +61,14 @@ public class InmuebleFiltersDTO {
 
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+	
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 	public Double getPrecioMin() {

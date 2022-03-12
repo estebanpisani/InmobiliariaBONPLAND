@@ -23,7 +23,8 @@ public class InmuebleMapper {
 		inmueble.setPrecio(dto.getPrecio());
 		inmueble.setMetrosCuadrados(dto.getMetrosCuadrados());
 		inmueble.setAmbientes(dto.getAmbientes());
-		
+		inmueble.setCiudad(dto.getCiudad());
+		inmueble.setPais(dto.getPais());
 		inmueble.setEstado(dto.getEstado());
 		inmueble.setContrato(dto.getContrato());
 		/*
@@ -33,7 +34,7 @@ public class InmuebleMapper {
 			}
 		}
 		*/
-		inmueble.setCiudad(dto.getCiudad());
+
 		return inmueble;
 	}
 	
@@ -45,7 +46,7 @@ public class InmuebleMapper {
 		dto.setAmbientes(inmueble.getAmbientes());
 		dto.setMetrosCuadrados(inmueble.getMetrosCuadrados());
 		dto.setPrecio(inmueble.getPrecio());
-		
+		dto.setPais(inmueble.getPais());
 		dto.setContrato(inmueble.getContrato());
 		dto.setEstado(inmueble.getEstado());
 		

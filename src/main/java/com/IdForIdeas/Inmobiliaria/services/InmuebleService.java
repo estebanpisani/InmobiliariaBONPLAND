@@ -33,7 +33,7 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	
-	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad) {
+	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad, String pais) {
 		Inmueble inmueble = new Inmueble();
 		inmueble.setNombre(nombre);
 		inmueble.setDescripcion(descripcion);
@@ -42,6 +42,7 @@ public class InmuebleService {
 		inmueble.setMetrosCuadrados(metrosCuadrados);
 		inmueble.setPrecio(precio);
 		inmueble.setCiudad(ciudad);
+		inmueble.setPais(pais);
 		inmueble.setContrato(contrato);
 		inmueble.setEstado(estado);
 		return inmuebleRepo.save(inmueble);
@@ -56,7 +57,7 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	
-	public Inmueble update(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad) {
+	public Inmueble update(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad, String pais) {
 		Inmueble inmueble = inmuebleRepo.getById(id);
 		inmueble.setNombre(nombre);
 		inmueble.setDescripcion(descripcion);
@@ -64,6 +65,7 @@ public class InmuebleService {
 		inmueble.setMetrosCuadrados(metrosCuadrados);
 		inmueble.setPrecio(precio);
 		inmueble.setCiudad(ciudad);
+		inmueble.setPais(pais);
 		inmueble.setContrato(contrato);
 		inmueble.setEstado(estado);
 		return inmuebleRepo.save(inmueble);
@@ -83,8 +85,8 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.getById(id));
 	}
 	
-	public List <InmuebleDTO> getByFilters(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, Double precioMin, Double precioMax) {
-		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientesMin, ambientesMax, contrato, ciudad, precioMin, precioMax);
+	public List <InmuebleDTO> getByFilters(String nombre, Integer ambientesMin, Integer ambientesMax, String contrato, String ciudad, String pais, Double precioMin, Double precioMax) {
+		InmuebleFiltersDTO filtersDTO = new InmuebleFiltersDTO(nombre, ambientesMin, ambientesMax, contrato, ciudad, pais, precioMin, precioMax);
 		List<Inmueble> entidades = inmuebleRepo.findAll(inmuebleSpecification.getByFilters(filtersDTO));
 		return mapper.EntityList2DTOList(entidades);
 	}

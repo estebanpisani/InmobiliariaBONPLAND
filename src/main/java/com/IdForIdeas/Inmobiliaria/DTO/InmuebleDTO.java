@@ -13,10 +13,12 @@ public class InmuebleDTO {
 	private String contrato;
 	private String estado;
 	private String ciudad;
+	private String pais;
+	
 	public InmuebleDTO() {
 	}
 	public InmuebleDTO(String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
-			String contrato, String estado, String ciudad) {
+			String contrato, String estado, String ciudad, String pais) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ambientes = ambientes;
@@ -25,6 +27,7 @@ public class InmuebleDTO {
 		this.contrato = contrato;
 		this.estado = estado;
 		this.ciudad = ciudad;
+		this.pais = pais;
 	}
 	public String getNombre() {
 		return nombre;
@@ -80,5 +83,12 @@ public class InmuebleDTO {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	public String getPais() {
+		return pais;
+	}
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	
 	
 }
