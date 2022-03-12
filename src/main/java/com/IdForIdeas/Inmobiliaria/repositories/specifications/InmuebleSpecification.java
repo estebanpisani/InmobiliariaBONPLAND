@@ -84,6 +84,12 @@ public class InmuebleSpecification{
 					);
 				
 			}
+			if(StringUtils.hasLength(filtersDTO.getEstado())) {
+				predicates.add(
+						criteriaBuilder.like(criteriaBuilder.upper(root.get("estado")),"%"+filtersDTO.getEstado().toUpperCase()+"%")
+					);
+				
+			}
 			
 			if(StringUtils.hasLength(filtersDTO.getCiudad())) {
 				predicates.add(
