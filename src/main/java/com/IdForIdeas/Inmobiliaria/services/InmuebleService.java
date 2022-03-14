@@ -4,14 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.IdForIdeas.Inmobiliaria.DTO.InmuebleDTO;
-import com.IdForIdeas.Inmobiliaria.enums.Contrato;
-import com.IdForIdeas.Inmobiliaria.enums.EstadoInmueble;
 import com.IdForIdeas.Inmobiliaria.filters.InmuebleFiltersDTO;
 import com.IdForIdeas.Inmobiliaria.mappers.InmuebleMapper;
-import com.IdForIdeas.Inmobiliaria.models.Ciudad;
 import com.IdForIdeas.Inmobiliaria.models.Inmueble;
 import com.IdForIdeas.Inmobiliaria.repositories.InmuebleRepository;
 import com.IdForIdeas.Inmobiliaria.repositories.specifications.InmuebleSpecification;
@@ -54,8 +50,45 @@ public class InmuebleService {
 	 */
 	
 	public InmuebleDTO update(InmuebleDTO dto, Long id) {
+		Inmueble inmueble = inmuebleRepo.getById(id);
+		if (dto.getNombre()!=null) {
+			inmueble.setNombre(dto.getNombre());
+		}
+		if(dto.getDescripcion()!=null) {
+			inmueble.setDescripcion(dto.getDescripcion());			
+		}
+		if(dto.getDireccion()!=null) {
+		inmueble.setDireccion(dto.getDireccion());
+		}
+		if(dto.getPrecio()!=null && dto.getPrecio()!=0) {
+		inmueble.setPrecio(dto.getPrecio());
+		}
+		if(dto.getMetrosCuadrados()!=null && dto.getMetrosCuadrados()!=0.0) {
+		inmueble.setMetrosCuadrados(dto.getMetrosCuadrados());
+		}
+		if(dto.getAmbientes()!=null && dto.getAmbientes()!=0) {
+		inmueble.setAmbientes(dto.getAmbientes());
+		}
+		if (dto.getCiudad()!=null) {
+		inmueble.setCiudad(dto.getCiudad());
+		}
+		if (dto.getPais()!=null) {
+		inmueble.setPais(dto.getPais());
+		}
+		if (dto.getEstado()!=null) {
+		inmueble.setEstado(dto.getEstado());
+		}
+		if (dto.getContrato()!=null) {
+		inmueble.setContrato(dto.getContrato());
+		}
+		if (dto.getFoto()!=null) {
+		inmueble.setFoto(dto.getFoto());
+		}
+		/*
 		Inmueble inmueble = mapper.DTO2Entity(dto);
+		
 		inmueble.setId(id);
+		*/
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	

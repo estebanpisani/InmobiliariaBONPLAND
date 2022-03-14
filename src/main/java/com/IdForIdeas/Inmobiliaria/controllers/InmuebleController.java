@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.IdForIdeas.Inmobiliaria.DTO.CiudadDTO;
 import com.IdForIdeas.Inmobiliaria.DTO.InmuebleDTO;
-import com.IdForIdeas.Inmobiliaria.enums.Contrato;
-import com.IdForIdeas.Inmobiliaria.services.CiudadService;
 import com.IdForIdeas.Inmobiliaria.services.FotoService;
 import com.IdForIdeas.Inmobiliaria.services.InmuebleService;
 
@@ -58,9 +56,9 @@ public class InmuebleController {
 		}
 		
 		@PostMapping("/{id}")
-		public ResponseEntity<InmuebleDTO> update(@PathVariable Long id, @RequestBody InmuebleDTO dto, @RequestParam(required = false) MultipartFile file){
-			if(file!=null) {
-			dto.setFoto(fotoServ.saveFoto(file));}
+		public ResponseEntity<InmuebleDTO> update(@PathVariable Long id, @RequestBody(required = false) InmuebleDTO dto, @RequestParam(required = false) MultipartFile file){			
+			if(file!=null&&dto!=null) {
+			dto.setFoto(fotoServ.saveFoto(file));}	
 			return ResponseEntity.status(HttpStatus.CREATED).body(inmuebleServ.update(dto, id));
 		}
 	
