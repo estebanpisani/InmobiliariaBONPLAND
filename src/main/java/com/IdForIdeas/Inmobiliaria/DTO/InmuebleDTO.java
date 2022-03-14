@@ -1,5 +1,10 @@
 package com.IdForIdeas.Inmobiliaria.DTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.IdForIdeas.Inmobiliaria.enums.Contrato;
 import com.IdForIdeas.Inmobiliaria.enums.EstadoInmueble;
 
@@ -14,11 +19,12 @@ public class InmuebleDTO {
 	private String estado;
 	private String ciudad;
 	private String pais;
+	private List<MultipartFile> fotos = new ArrayList<MultipartFile>();
 	
 	public InmuebleDTO() {
 	}
 	public InmuebleDTO(String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
-			String contrato, String estado, String ciudad, String pais) {
+			String contrato, String estado, String ciudad, String pais, List<MultipartFile> fotos) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ambientes = ambientes;
@@ -28,6 +34,7 @@ public class InmuebleDTO {
 		this.estado = estado;
 		this.ciudad = ciudad;
 		this.pais = pais;
+		this.fotos = fotos;
 	}
 	public String getNombre() {
 		return nombre;
@@ -88,6 +95,12 @@ public class InmuebleDTO {
 	}
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	public List<MultipartFile> getFotos() {
+		return fotos;
+	}
+	public void setFotos(List<MultipartFile> fotos) {
+		this.fotos = fotos;
 	}
 	
 	

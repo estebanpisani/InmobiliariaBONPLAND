@@ -19,20 +19,21 @@ public class CiudadMapper {
 	public Ciudad DTO2Entity(CiudadDTO dto) {
 		Ciudad ciudad = new Ciudad();
 		ciudad.setNombre(dto.getNombre());
+		/*
 		if(dto.getPais()!=null&&!dto.getPais().isEmpty()){
 			if(paisServ.getByName(dto.getPais())!=null){
 				ciudad.setPais(paisServ.getByName(dto.getPais()));
 			}else {
 				ciudad.setPais(paisServ.create(dto.getPais()));
 			}
-		}
+		}*/
 		return ciudad;
 	}
 	
 	public CiudadDTO Entity2DTO(Ciudad ciudad) {
 		CiudadDTO dto = new CiudadDTO();
-		dto.setNombre(ciudad.getNombre());
-		dto.setPais(ciudad.getPais().getNombre());
+		dto.setNombre(ciudad.getNombre());/*
+		dto.setPais(ciudad.getPais().getNombre());*/
 		return dto;
 	}
 	

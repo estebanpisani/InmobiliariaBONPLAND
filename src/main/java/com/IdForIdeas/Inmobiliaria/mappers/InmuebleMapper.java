@@ -5,15 +5,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.IdForIdeas.Inmobiliaria.DTO.InmuebleDTO;
 import com.IdForIdeas.Inmobiliaria.models.Inmueble;
 import com.IdForIdeas.Inmobiliaria.services.CiudadService;
+import com.IdForIdeas.Inmobiliaria.services.FotoService;
 
 @Component
 public class InmuebleMapper {
 	@Autowired
-	CiudadService ciudadServ;
+	FotoService fotoServ;
 	
 	public Inmueble DTO2Entity(InmuebleDTO dto) {
 		Inmueble inmueble = new Inmueble();
@@ -27,14 +29,11 @@ public class InmuebleMapper {
 		inmueble.setPais(dto.getPais());
 		inmueble.setEstado(dto.getEstado());
 		inmueble.setContrato(dto.getContrato());
-		/*
-		if(dto.getCiudad()!=null && !dto.getCiudad().isEmpty()){
-			if(ciudadServ.getByName(dto.getCiudad())!=null){
-				inmueble.setCiudad(ciudadServ.getByName(dto.getCiudad()));
+		if(dto.getFotos().size()>0) {
+			for (MultipartFile file : dto.getFotos()) {
+				inmueble.getFotos().add(fotoServ.save(file));
 			}
 		}
-		*/
-
 		return inmueble;
 	}
 	
@@ -49,9 +48,7 @@ public class InmuebleMapper {
 		dto.setPais(inmueble.getPais());
 		dto.setContrato(inmueble.getContrato());
 		dto.setEstado(inmueble.getEstado());
-		
-		dto.setCiudad(inmueble.getCiudad());
-		
+		dto.setCiudad(inmueble.getCiudad());	
 		return dto;
 	}
 	public List<InmuebleDTO> EntityList2DTOList(List<Inmueble> inmuebles){

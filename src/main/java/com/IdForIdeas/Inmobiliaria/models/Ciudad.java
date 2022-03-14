@@ -12,19 +12,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "ciudades")
+//@Entity
+//@Table(name = "ciudades")
 public class Ciudad {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column(name = "ciudad_nombre")
+	//@Column(name = "ciudad_nombre")
 	private String nombre;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "pais_id", nullable = false)
-	private Pais pais;
-	@OneToMany(mappedBy = "ciudad", fetch = FetchType.LAZY)
-	private Set<Inmueble> inmuebles;
+	//@ManyToOne(fetch = FetchType.EAGER)
+	//@JoinColumn(name = "pais_id", nullable = false)
+	//private Pais pais;
+	//@OneToMany(mappedBy = "ciudad", fetch = FetchType.LAZY)
+	//private Set<Inmueble> inmuebles;
 	
 	public Ciudad() {
 	}
@@ -33,8 +33,8 @@ public class Ciudad {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.pais = pais;
-		this.inmuebles = inmuebles;
+		//this.pais = pais;
+		//this.inmuebles = inmuebles;
 	}
 
 	public Long getId() {
@@ -53,7 +53,7 @@ public class Ciudad {
 		this.nombre = nombre;
 	}
 
-	public Pais getPais() {
+	/*public Pais getPais() {
 		return pais;
 	}
 
@@ -68,5 +68,5 @@ public class Ciudad {
 	public void setInmuebles(Set<Inmueble> inmuebles) {
 		this.inmuebles = inmuebles;
 	}
-
+	 */
 }

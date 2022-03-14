@@ -1,5 +1,7 @@
 package com.IdForIdeas.Inmobiliaria.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,6 +32,7 @@ public class Inmueble {
 	private String estado;
 	private String ciudad;
 	private String pais;
+	private List<Foto> fotos;
 	/*
 	@Enumerated(EnumType.STRING)
 	private Contrato contrato;
@@ -44,7 +47,7 @@ public class Inmueble {
 	}
 
 	public Inmueble(Long id, String nombre, String descripcion, String direccion, Integer ambientes,
-			Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad) {
+			Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad, List<Foto> fotos) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -55,6 +58,7 @@ public class Inmueble {
 		this.contrato = contrato;
 		this.estado = estado;
 		this.ciudad = ciudad;
+		this.setFotos(fotos);
 	}
 
 
@@ -146,10 +150,17 @@ public class Inmueble {
 		this.pais = pais;
 	}
 
+	public List<Foto> getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(List<Foto> fotos) {
+		this.fotos = fotos;
+	}
+	
 	@Override
 	public String toString() {
 		return "Inmueble [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", ambientes=" + ambientes
 				+ ", metrosCuadrados=" + metrosCuadrados + ", precio=" + precio + ", ciudad=" + ciudad + "]";
 	}
-
 }

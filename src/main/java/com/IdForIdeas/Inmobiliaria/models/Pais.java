@@ -10,28 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "paises")
+//@Entity
+//@Table(name = "paises")
 public class Pais {
 	@Id
 	@GeneratedValue()
 	private Long id;
-	@Column(name = "pais_nombre")
+	//@Column(name = "pais_nombre")
 	private String nombre;
-	@OneToMany(mappedBy = "pais", fetch = FetchType.LAZY)
+	/*@OneToMany(mappedBy = "pais", fetch = FetchType.LAZY)
 	private Set<Ciudad> ciudades;
-	
+	*/
 	public Pais() {
 		super();
 	}
-
+/*
 	public Pais(Long id, String nombre, Set<Ciudad> ciudades) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.ciudades = ciudades;
 	}
-
+*/
 	public Long getId() {
 		return id;
 	}
@@ -47,12 +47,12 @@ public class Pais {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+/*
 	public Set<Ciudad> getCiudades() {
 		return ciudades;
 	}
 
 	public void setCiudades(Set<Ciudad> ciudades) {
 		this.ciudades = ciudades;
-	}
+	}*/
 }
