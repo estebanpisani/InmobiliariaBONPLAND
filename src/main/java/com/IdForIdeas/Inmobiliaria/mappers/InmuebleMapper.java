@@ -29,11 +29,7 @@ public class InmuebleMapper {
 		inmueble.setPais(dto.getPais());
 		inmueble.setEstado(dto.getEstado());
 		inmueble.setContrato(dto.getContrato());
-		if(dto.getFotos().size()>0) {
-			for (MultipartFile file : dto.getFotos()) {
-				inmueble.getFotos().add(fotoServ.save(file));
-			}
-		}
+		inmueble.setFoto(dto.getFoto());
 		return inmueble;
 	}
 	
@@ -48,7 +44,8 @@ public class InmuebleMapper {
 		dto.setPais(inmueble.getPais());
 		dto.setContrato(inmueble.getContrato());
 		dto.setEstado(inmueble.getEstado());
-		dto.setCiudad(inmueble.getCiudad());	
+		dto.setCiudad(inmueble.getCiudad());
+		dto.setFoto(inmueble.getFoto());
 		return dto;
 	}
 	public List<InmuebleDTO> EntityList2DTOList(List<Inmueble> inmuebles){

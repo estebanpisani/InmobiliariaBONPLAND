@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.IdForIdeas.Inmobiliaria.DTO.InmuebleDTO;
 import com.IdForIdeas.Inmobiliaria.enums.Contrato;
@@ -33,7 +34,7 @@ public class InmuebleService {
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	
-	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad, String pais) {
+	public Inmueble create(String nombre, String descripcion, String direccion, Integer ambientes, Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad, String pais, String foto) {
 		Inmueble inmueble = new Inmueble();
 		inmueble.setNombre(nombre);
 		inmueble.setDescripcion(descripcion);
@@ -45,6 +46,7 @@ public class InmuebleService {
 		inmueble.setPais(pais);
 		inmueble.setContrato(contrato);
 		inmueble.setEstado(estado);
+		inmueble.setFoto(foto);
 		return inmuebleRepo.save(inmueble);
 	}
 	/*

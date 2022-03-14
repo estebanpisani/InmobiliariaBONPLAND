@@ -1,12 +1,6 @@
 package com.IdForIdeas.Inmobiliaria.DTO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
-
-import com.IdForIdeas.Inmobiliaria.enums.Contrato;
-import com.IdForIdeas.Inmobiliaria.enums.EstadoInmueble;
 
 public class InmuebleDTO {
 	private String nombre;
@@ -19,12 +13,13 @@ public class InmuebleDTO {
 	private String estado;
 	private String ciudad;
 	private String pais;
-	private List<MultipartFile> fotos = new ArrayList<MultipartFile>();
+	private String foto;
+	//private MultipartFile file;
 	
 	public InmuebleDTO() {
 	}
 	public InmuebleDTO(String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
-			String contrato, String estado, String ciudad, String pais, List<MultipartFile> fotos) {
+			String contrato, String estado, String ciudad, String pais, String foto) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ambientes = ambientes;
@@ -34,7 +29,8 @@ public class InmuebleDTO {
 		this.estado = estado;
 		this.ciudad = ciudad;
 		this.pais = pais;
-		this.fotos = fotos;
+		this.foto = foto;
+		//this.file = file;
 	}
 	public String getNombre() {
 		return nombre;
@@ -96,12 +92,19 @@ public class InmuebleDTO {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-	public List<MultipartFile> getFotos() {
-		return fotos;
+	public String getFoto() {
+		return foto;
 	}
-	public void setFotos(List<MultipartFile> fotos) {
-		this.fotos = fotos;
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	/*
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	
-	
+	*/
 }
