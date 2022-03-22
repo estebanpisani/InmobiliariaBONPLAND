@@ -8,33 +8,48 @@ import org.springframework.stereotype.Component;
 
 import com.IdForIdeas.Inmobiliaria.DTO.InmuebleDTO;
 import com.IdForIdeas.Inmobiliaria.models.Inmueble;
-import com.IdForIdeas.Inmobiliaria.services.CiudadService;
+import com.IdForIdeas.Inmobiliaria.services.FotoService;
 
 @Component
 public class InmuebleMapper {
 	@Autowired
-	CiudadService ciudadServ;
+	FotoService fotoServ;
 	
 	public Inmueble DTO2Entity(InmuebleDTO dto) {
 		Inmueble inmueble = new Inmueble();
-		inmueble.setNombre(dto.getNombre());
-		inmueble.setDescripcion(dto.getDescripcion());
-		inmueble.setDireccion(dto.getDireccion());
-		inmueble.setPrecio(dto.getPrecio());
-		inmueble.setMetrosCuadrados(dto.getMetrosCuadrados());
-		inmueble.setAmbientes(dto.getAmbientes());
-		inmueble.setCiudad(dto.getCiudad());
-		inmueble.setPais(dto.getPais());
-		inmueble.setEstado(dto.getEstado());
-		inmueble.setContrato(dto.getContrato());
-		/*
-		if(dto.getCiudad()!=null && !dto.getCiudad().isEmpty()){
-			if(ciudadServ.getByName(dto.getCiudad())!=null){
-				inmueble.setCiudad(ciudadServ.getByName(dto.getCiudad()));
-			}
+		if (dto.getNombre()!=null) {
+			inmueble.setNombre(dto.getNombre());
 		}
-		*/
-
+		if(dto.getDescripcion()!=null) {
+			inmueble.setDescripcion(dto.getDescripcion());			
+		}
+		if(dto.getDireccion()!=null) {
+		inmueble.setDireccion(dto.getDireccion());
+		}
+		if(dto.getPrecio()!=null && dto.getPrecio()!=0) {
+		inmueble.setPrecio(dto.getPrecio());
+		}
+		if(dto.getMetrosCuadrados()!=null && dto.getMetrosCuadrados()!=0.0) {
+		inmueble.setMetrosCuadrados(dto.getMetrosCuadrados());
+		}
+		if(dto.getAmbientes()!=null && dto.getAmbientes()!=0) {
+		inmueble.setAmbientes(dto.getAmbientes());
+		}
+		if (dto.getCiudad()!=null) {
+		inmueble.setCiudad(dto.getCiudad());
+		}
+		if (dto.getPais()!=null) {
+		inmueble.setPais(dto.getPais());
+		}
+		if (dto.getEstado()!=null) {
+		inmueble.setEstado(dto.getEstado());
+		}
+		if (dto.getContrato()!=null) {
+		inmueble.setContrato(dto.getContrato());
+		}
+		if (dto.getFoto()!=null) {
+		inmueble.setFoto(dto.getFoto());
+		}
 		return inmueble;
 	}
 	
@@ -49,9 +64,8 @@ public class InmuebleMapper {
 		dto.setPais(inmueble.getPais());
 		dto.setContrato(inmueble.getContrato());
 		dto.setEstado(inmueble.getEstado());
-		
 		dto.setCiudad(inmueble.getCiudad());
-		
+		dto.setFoto(inmueble.getFoto());
 		return dto;
 	}
 	public List<InmuebleDTO> EntityList2DTOList(List<Inmueble> inmuebles){
