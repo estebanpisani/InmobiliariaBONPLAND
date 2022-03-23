@@ -1,27 +1,7 @@
-package com.IdForIdeas.Inmobiliaria.models;
+package com.IdForIdeas.Inmobiliaria.DTO;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.IdForIdeas.Inmobiliaria.enums.Contrato;
-import com.IdForIdeas.Inmobiliaria.enums.EstadoInmueble;
-
-@Entity
-@Table(name = "inmuebles")
-public class Inmueble {
-	@Id
-	@GeneratedValue
+public class InmuebleDTO {
 	private Long id;
-	@Column(name = "inmueble_nombre")
 	private String nombre;
 	private String descripcion;
 	private String direccion;
@@ -33,134 +13,104 @@ public class Inmueble {
 	private String ciudad;
 	private String pais;
 	private String foto;
-	/*
-	@Enumerated(EnumType.STRING)
-	private Contrato contrato;
-	@Enumerated(EnumType.STRING)
-	private EstadoInmueble estado;
-	@ManyToOne
-	@JoinColumn(name = "ciudad_id", nullable = false)
-	private Ciudad ciudad;
-	*/
-
-	public Inmueble() {
+	//private MultipartFile file;
+	
+	public InmuebleDTO() {
 	}
-
-	public Inmueble(Long id, String nombre, String descripcion, String direccion, Integer ambientes,
-			Double metrosCuadrados, Double precio, String contrato, String estado, String ciudad, String foto) {
-		this.id = id;
+	public InmuebleDTO(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
+			String contrato, String estado, String ciudad, String pais, String foto) {
+		this.setId(id);
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.direccion = direccion;
 		this.ambientes = ambientes;
 		this.metrosCuadrados = metrosCuadrados;
 		this.precio = precio;
 		this.contrato = contrato;
 		this.estado = estado;
 		this.ciudad = ciudad;
-		this.setFoto(foto);
+		this.pais = pais;
+		this.foto = foto;
+		//this.file = file;
 	}
-
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 	public Integer getAmbientes() {
 		return ambientes;
 	}
-
 	public void setAmbientes(Integer ambientes) {
 		this.ambientes = ambientes;
 	}
-
 	public Double getMetrosCuadrados() {
 		return metrosCuadrados;
 	}
-
 	public void setMetrosCuadrados(Double metrosCuadrados) {
 		this.metrosCuadrados = metrosCuadrados;
 	}
-
 	public Double getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-
-	public String getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-
 	public String getContrato() {
 		return contrato;
 	}
-
 	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
-
 	public String getEstado() {
 		return estado;
 	}
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
+	public String getCiudad() {
+		return ciudad;
+	}
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
 	public String getDireccion() {
 		return direccion;
 	}
-
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
 	public String getPais() {
 		return pais;
 	}
-
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-
 	public String getFoto() {
 		return foto;
 	}
-
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	/*
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	
-	@Override
-	public String toString() {
-		return "Inmueble [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", ambientes=" + ambientes
-				+ ", metrosCuadrados=" + metrosCuadrados + ", precio=" + precio + ", ciudad=" + ciudad + "]";
+	*/
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

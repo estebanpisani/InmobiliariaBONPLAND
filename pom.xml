@@ -14,7 +14,7 @@
 	<name>InmobiliariaBonpland</name>
 	<description>Proyecto Inmobiliaria Bonpland para ID for Ideas. #Idea5</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
