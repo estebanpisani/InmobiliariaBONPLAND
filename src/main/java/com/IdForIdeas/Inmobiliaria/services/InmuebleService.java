@@ -84,11 +84,7 @@ public class InmuebleService {
 		if (dto.getFoto()!=null) {
 		inmueble.setFoto(dto.getFoto());
 		}
-		/*
-		Inmueble inmueble = mapper.DTO2Entity(dto);
-		
-		inmueble.setId(id);
-		*/
+
 		return mapper.Entity2DTO(inmuebleRepo.save(inmueble));
 	}
 	

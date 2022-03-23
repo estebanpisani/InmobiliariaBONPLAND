@@ -55,6 +55,7 @@ public class InmuebleMapper {
 	
 	public InmuebleDTO Entity2DTO(Inmueble inmueble) {
 		InmuebleDTO dto = new InmuebleDTO();
+		dto.setId(inmueble.getId());
 		dto.setNombre(inmueble.getNombre());
 		dto.setDescripcion(inmueble.getDescripcion());
 		dto.setDireccion(inmueble.getDireccion());

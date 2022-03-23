@@ -1,8 +1,7 @@
 package com.IdForIdeas.Inmobiliaria.DTO;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class InmuebleDTO {
+	private Long id;
 	private String nombre;
 	private String descripcion;
 	private String direccion;
@@ -18,8 +17,9 @@ public class InmuebleDTO {
 	
 	public InmuebleDTO() {
 	}
-	public InmuebleDTO(String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
+	public InmuebleDTO(Long id, String nombre, String descripcion, Integer ambientes, Double metrosCuadrados, Double precio,
 			String contrato, String estado, String ciudad, String pais, String foto) {
+		this.setId(id);
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ambientes = ambientes;
@@ -107,4 +107,10 @@ public class InmuebleDTO {
 	}
 	
 	*/
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 }
