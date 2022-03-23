@@ -1,7 +1,8 @@
 # Inmobiliaria BONPLAND
 ## Backend para proyecto de Inmobiliaria BONPLAND.
 #### Descripción
-Por el momento, sólo cuenta con el CRUD básico de la entidad Inmueble.
+Por el momento, cuenta con el CRUD básico de inmuebles.
+Están habilitados los filtros según nombre, contrato, ciudad, pais y rangos min/max de ambientes y precio.
 #### En desarrollo:
-Actualmente estoy trabajando en el listado de inmuebles con filtros según sus atributos.
+Actualmente estoy trabajando en la carga de imágenes y posteriormente la autenticación de usuario admin.
 
